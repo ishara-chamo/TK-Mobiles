@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact Us - TK Mobiles</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #e74c3c;
+        --dark-color: #2c3e50;
+        --light-color: #ecf0f1;
+        --accent-color: #f39c12;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 0 0 10%;
+        overflow: hidden;
+        background-color: var(--dark-color);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      ul:hover {
+        background-color: rgba(44, 62, 80, 0.95);
+      }
+
+      li {
+        float: left;
+        transition: transform 0.3s ease;
+      }
+
+      li:hover {
+        transform: translateY(-3px);
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 16px;
+        margin-left: 10px;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      li a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 15px;
+        left: 50%;
+        background-color: var(--accent-color);
+        transition: all 0.3s ease;
+      }
+
+      li a:hover:after {
+        width: 50%;
+        left: 25%;
+      }
+
+      li a:hover {
+        color: var(--accent-color);
+        background-color: transparent;
+      }
+
+      .tk {
+        color: var(--accent-color);
+        font-size: 22px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Contact Page Styles */
+      .contact-header {
+        background: url("cont.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 60px;
+        color: white;
+      }
+
+      .contact-header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .contact-content {
+        padding: 80px 10%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .contact-left {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .contact-right {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .section-title {
+        text-align: center;
+        color: var(--accent-color);
+        margin-bottom: 30px;
+        font-size: 2rem;
+      }
+
+      .contact-description {
+        text-align: left;
+        margin-bottom: 40px;
+        color: #555;
+      }
+
+      .contact-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+      }
+
+      .contact-table tr {
+        margin-bottom: 15px;
+      }
+
+      .contact-table td {
+        padding: 12px 0;
+        vertical-align: top;
+      }
+
+      .contact-table td:first-child {
+        width: 40px;
+        text-align: center;
+      }
+
+      .contact-icon {
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+
+      .contact-label {
+        font-weight: 600;
+        color: var(--dark-color);
+        margin-bottom: 5px;
+      }
+
+      .contact-value {
+        color: #666;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--dark-color);
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-5px);
+      }
+
+      .contact-form {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-form h2 {
+        color: var(--accent-color);
+        margin-top: 0;
+        position: relative;
+        padding-bottom: 15px;
+        text-align: center;
+      }
+
+      .contact-form h2:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 3px;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--accent-color);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark-color);
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: "Montserrat", sans-serif;
+        transition: all 0.3s ease;
+      }
+
+      .form-control:focus {
+        border-color: var(--accent-color);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-btn {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .submit-btn:hover {
+        background-color: #c0392b;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .map-container {
+        margin-top: 60px;
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .map-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, var(--dark-color), #1a252f);
+        color: white;
+        padding: 60px 10% 30px;
+        position: relative;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .footer-logo span {
+        color: var(--accent-color);
+      }
+
+      .footer-about p {
+        opacity: 0.8;
+        line-height: 1.8;
+      }
+
+      .footer-contact h4,
+      .footer-links h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-contact h4:after,
+      .footer-links h4:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-color);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom span {
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .contact-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .contact-content {
+          flex-direction: column;
+        }
+
+        .contact-left,
+        .contact-right {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="index.html"><div class="tk">TK Mobiles</div></a>
+      </li>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+
+    <div class="contact-header">
+      <div>
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team for all your mobile repair needs</p>
+      </div>
+    </div>
+
+    <div class="contact-content">
+      <!-- Left Column -->
+      <div class="contact-left">
+        <h2 class="section-title">Our Contact Information</h2>
+        <p class="contact-description">
+          Have questions about our services or need to schedule a repair? Reach
+          out to us using the information below.
+        </p>
+
+        <table class="contact-table">
+          <tr>
+            <td><i class="fas fa-map-marker-alt contact-icon"></i></td>
+            <td>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">
+                123 Main Street<br />Colombo 7<br />Sri Lanka
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-phone contact-icon"></i></td>
+            <td>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">+94 712948221<br />+94 112345678</div>
+            </td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-envelope contact-icon"></i></td>
+            <td>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                tkmobiles610@gmail.com<br />support@tkmobiles.lk
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clock contact-icon"></i></td>
+            <td>
+              <div class="contact-label">Working Hours</div>
+              <div class="contact-value">
+                Monday - Sunday: 9:00 AM - 7:00 PM<br />Sunday: 9:00 AM - 6:00
+                PM<br />Poyaday: Closed
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="contact-right">
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" class="form-control" required>
+                <option value="">Select a service</option>
+                <option value="screen">Screen Replacement</option>
+                <option value="battery">Battery Replacement</option>
+                <option value="water">Water Damage Repair</option>
+                <option value="charging">Charging Port Repair</option>
+                <option value="data">Data Recovery</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" class="form-control" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.798511757686!2d79.85321421472084!3d6.921658495003785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2593d4b3b7e0d%3A0x8a5e3b1a3d4b3b7e!2sColombo%207%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo"><span>TK</span> MOBILES</div>
+          <p>
+            We provide fast, reliable, and affordable repair services for all
+            major smartphone brands and models. Our certified technicians have
+            years of experience fixing all types of mobile devices.
+          </p>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Main Street, Colombo 7</p>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-phone"></i>
+            <p>+94 712948221</p>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <p>tkmobiles610@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <table style="border-collapse: separate; border-spacing: 15px">
+            <tr>
+              <td><a href="index.html">Home</a></td>
+            </tr>
+            <tr>
+              <td><a href="services.html">Services</a></td>
+            </tr>
+            <tr>
+              <td><a href="Aboutus.html">About Us</a></td>
+            </tr>
+            <tr>
+              <td><a href="offers.html">My Offers</a></td>
+            </tr>
+            <tr>
+              <td><a href="help.html">Help</a></td>
+            </tr>
+            <tr>
+              <td><a href="conditions.html">Terms & Conditions</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        @ Copyright 2024 | <span>Designed By Freez</span>
+      </div>
+    </footer>
+
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          alert("Thank you for your message! We will contact you soon.");
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

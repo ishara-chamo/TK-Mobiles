@@ -1,0 +1,486 @@
+<!-- gallery.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gallery - TK Mobiles</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Same styles as about.html for consistency */
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #e74c3c;
+        --dark-color: #2c3e50;
+        --light-color: #ecf0f1;
+        --accent-color: #f39c12;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Navigation - Same as index.html */
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0 0 0 10%;
+        overflow: hidden;
+        background-color: var(--dark-color);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      ul:hover {
+        background-color: rgba(44, 62, 80, 0.95);
+      }
+
+      li {
+        float: left;
+        transition: transform 0.3s ease;
+      }
+
+      li:hover {
+        transform: translateY(-3px);
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 20px 16px;
+        margin-left: 10px;
+        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      li a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 15px;
+        left: 50%;
+        background-color: var(--accent-color);
+        transition: all 0.3s ease;
+      }
+
+      li a:hover:after {
+        width: 50%;
+        left: 25%;
+      }
+
+      li a:hover {
+        color: var(--accent-color);
+        background-color: transparent;
+      }
+
+      .tk {
+        color: var(--accent-color);
+        font-size: 22px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Gallery Page Specific Styles */
+      .gallery-header {
+        background:  url("back.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        margin-top: 60px;
+        color: white;
+      }
+
+      .gallery-header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+      }
+
+      .gallery-content {
+        padding: 80px 10%;
+      }
+
+      .gallery-intro {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        text-align: center;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .gallery-item:hover .gallery-img {
+        transform: scale(1.1);
+      }
+
+      .gallery-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 20px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .gallery-caption {
+        transform: translateY(0);
+      }
+
+      .gallery-caption h3 {
+        margin: 0 0 10px;
+        color: var(--accent-color);
+      }
+
+      .gallery-caption p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .gallery-categories {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 40px 0;
+      }
+
+      .gallery-category {
+        background: var(--dark-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-category:hover,
+      .gallery-category.active {
+        background: var(--accent-color);
+      }
+
+      /* Footer - Same as index.html */
+      footer {
+        background: linear-gradient(135deg, var(--dark-color), #1a252f);
+        color: white;
+        padding: 60px 10% 30px;
+        position: relative;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .footer-logo span {
+        color: var(--accent-color);
+      }
+
+      .footer-about p {
+        opacity: 0.8;
+        line-height: 1.8;
+      }
+
+      .footer-contact h4,
+      .footer-links h4 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer-contact h4:after,
+      .footer-links h4:after {
+        content: "";
+        position: absolute;
+        width: 50px;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent-color);
+      }
+
+      .contact-info {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-info i {
+        margin-right: 15px;
+        color: var(--accent-color);
+        font-size: 1.1rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+        float: none;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        margin-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-bottom span {
+        color: var(--accent-color);
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .gallery-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="index.html"><div class="tk">TK Mobiles</div></a>
+      </li>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="gallery.html">GALLERY</a></li>
+      <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+
+    <div class="gallery-header">
+      <div>
+        <h1>Our Work Gallery</h1>
+        <p>See examples of our repair work and satisfied customers</p>
+      </div>
+    </div>
+
+    <div class="gallery-content">
+      <div class="gallery-intro">
+        <h2>Quality Repairs in Action</h2>
+        <p>
+          Browse through our gallery to see examples of our work, from screen
+          replacements to complex motherboard repairs. Each project is handled
+          with care and precision by our certified technicians.
+        </p>
+      </div>
+
+      <div class="gallery-categories">
+        <div class="gallery-category active">All</div>
+        <div class="gallery-category">Screen Repairs</div>
+        <div class="gallery-category">Water Damage</div>
+        <div class="gallery-category">Battery Replacements</div>
+        <div class="gallery-category">Data Recovery</div>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="istockphoto-1172804792-612x612.jpg" alt="Screen Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>iPhone Screen Replacement</h3>
+            <p>
+              Complete screen replacement for iPhone 12 with OEM quality parts
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="water-damaged-phone-repair-express-vernon-1.jpeg" alt="Water Damage Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Samsung Water Damage</h3>
+            <p>Successful repair of water-damaged Samsung Galaxy S21</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="istockphoto-1469066514-612x612.jpg" alt="Battery Replacement" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Battery Replacement</h3>
+            <p>New high-capacity battery installed in iPhone X</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="cover2-thumbnail.jpg" alt="Charging Port Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Charging Port Repair</h3>
+            <p>Fixed loose charging port on Google Pixel 5</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="7.jpeg" alt="Motherboard Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Motherboard Repair</h3>
+            <p>Complex motherboard repair on OnePlus 8 Pro</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="5.jpeg" alt="Data Recovery" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Data Recovery</h3>
+            <p>Recovered precious photos from damaged Huawei P30</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="ii.jpeg" alt="Camera Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Camera Repair</h3>
+            <p>Fixed blurry camera on iPhone 11 Pro Max</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="speaker.jpeg" alt="Speaker Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Speaker Repair</h3>
+            <p>Replaced damaged speaker on Samsung Galaxy Note 20</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="3.jpeg" alt="Software Repair" class="gallery-img" />
+          <div class="gallery-caption">
+            <h3>Software Repair</h3>
+            <p>Fixed boot loop issue on Xiaomi Mi 10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-about">
+          <div class="footer-logo"><span>TK</span> MOBILES</div>
+          <p>
+            We provide fast, reliable, and affordable repair services for all
+            major smartphone brands and models. Our certified technicians have
+            years of experience fixing all types of mobile devices.
+          </p>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact Us</h4>
+          <div class="contact-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Main Street, Colombo 7</p>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-phone"></i>
+            <p>+94 712948221</p>
+          </div>
+          <div class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <p>tkmobiles610@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <table style="border-collapse: separate; border-spacing: 15px">
+            <tr>
+              <td><a href="index.html">Home</a></td>
+            </tr>
+            <tr>
+              <td><a href="services.html">Services</a></td>
+            </tr>
+            <tr>
+              <td><a href="Aboutus.html">About Us</a></td>
+            </tr>
+            <tr>
+              <td><a href="offers.html">My Offers</a></td>
+            </tr>
+            <tr>
+              <td><a href="help.html">Help</a></td>
+            </tr>
+            <tr>
+              <td><a href="conditions.html">Terms & Conditions</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        @ Copyright 2024 | <span>Designed By Freez</span>
+      </div>
+    </footer>
+  </body>
+</html>

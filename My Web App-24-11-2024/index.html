@@ -1,0 +1,787 @@
+<html>
+<head>
+        <title>TK Mobiles - Phone Repair Services</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora|Montserrat">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+        <style>
+               :root {
+                --primary-color: #3498db;
+                --secondary-color: #e74c3c;
+                --dark-color: #2c3e50;
+                --light-color: #ecf0f1;
+                --accent-color: #f39c12;
+            }
+
+            body {
+                font-family: 'Montserrat', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f9f9f9;
+                color: #333;
+                line-height: 1.6;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0 0 0 10%;
+                overflow: hidden;
+                background-color: var(--dark-color);
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+            
+            ul:hover {
+                background-color: rgba(44, 62, 80, 0.95);
+            }
+
+                  
+            li {
+                float: left;
+                transition: transform 0.3s ease;
+            }
+            
+            li:hover {
+                transform: translateY(-3px);
+            }
+            
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 20px 16px;
+                margin-left: 10px;
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                position: relative;
+                transition: all 0.3s ease;
+            }
+            
+            li a:after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 15px;
+                left: 50%;
+                background-color: var(--accent-color);
+                transition: all 0.3s ease;
+            }
+            
+            li a:hover:after {
+                width: 50%;
+                left: 25%;
+            }
+            
+            li a:hover {
+                color: var(--accent-color);
+                background-color: transparent;
+            }
+            
+            .tk {
+                color: var(--accent-color);
+                font-size: 22px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+            
+            .hero-container {
+                position: relative;
+                width: 100%;
+                height: 80vh;
+                overflow: hidden;
+                margin-top: 60px;
+            }
+            
+            .im {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.7);
+                transition: transform 0.5s ease, filter 0.5s ease;
+            }
+            
+            .hero-container:hover .im {
+                transform: scale(1.02);
+                filter: brightness(0.6);
+            }
+            
+            .centered {
+                position: absolute;
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3.5vw;
+                text-align: center;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                animation: fadeIn 1.5s ease forwards;
+                border: none;
+            }
+            
+            .center {
+                position: absolute;
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                top: 55%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 2vw;
+                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                animation: fadeIn 1.5s ease forwards 0.5s;
+            }
+            
+            .book {
+                position: absolute;
+                top: 70%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                animation: fadeIn 1.5s ease forwards 1s;
+            }
+            
+            .book button {
+                background-color: var(--secondary-color);
+                border: none;
+                padding: 12px 30px;
+                font-size: 18px;
+                font-weight: 600;
+                border-radius: 30px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+            .book button:hover {
+                background-color: #c0392b;
+                transform: translateY(-3px);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+            
+            span.highlight {
+                color: var(--accent-color);
+                font-weight: 700;
+            }
+            
+            .pr {
+                position: absolute;
+                color: white;
+                font-family: 'Montserrat', sans-serif;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1.2vw;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                animation: fadeIn 1.5s ease forwards 1.5s;
+                text-align: center;
+                width: 80%;
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            .services-section {
+                padding: 80px 10%;
+                background-color: white;
+                text-align: center;
+            }
+            
+            h3.section-title {
+                font-size: 2.5rem;
+                color: var(--dark-color);
+                margin-bottom: 50px;
+                position: relative;
+                display: inline-block;
+            }
+            
+            h3.section-title:after {
+                content: '';
+                position: absolute;
+                width: 50%;
+                height: 3px;
+                bottom: -10px;
+                left: 25%;
+                background-color: var(--accent-color);
+            }
+            
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 30px;
+                margin-top: 40px;
+            }
+            
+            .service-card {
+                background: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+            }
+            
+            .service-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+            
+            .service-img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+            
+            .service-card:hover .service-img {
+                transform: scale(1.05);
+            }
+            
+            .service-content {
+                padding: 20px;
+                text-align: left;
+            }
+            
+            .service-content h4 {
+                color: var(--dark-color);
+                margin-top: 0;
+                font-size: 1.3rem;
+            }
+            
+            .service-content p {
+                color: #666;
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        
+        .slider-arrow {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slider-arrow:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .slider-arrow.left {
+            left: 20px;
+        }
+        
+        .slider-arrow.right {
+            right: 20px;
+        }
+            
+            footer {
+                background: linear-gradient(135deg, var(--dark-color), #1a252f);
+                color: white;
+                padding: 60px 10% 30px;
+                position: relative;
+            }
+            
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .footer-logo {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+            
+            .footer-logo span {
+                color: var(--accent-color);
+            }
+            
+            .footer-about p {
+                opacity: 0.8;
+                line-height: 1.8;
+            }
+            
+            .footer-contact h4, .footer-links h4 {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+                position: relative;
+                padding-bottom: 10px;
+            }
+            
+            .footer-contact h4:after, .footer-links h4:after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--accent-color);
+            }
+            
+            .contact-info {
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .contact-info i {
+                margin-right: 15px;
+                color: var(--accent-color);
+                font-size: 1.1rem;
+            }
+            
+            /* .footer-links ul {
+                list-style: none;
+                padding: 0;
+            } */
+            
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+            
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent-color);
+                transform: translateX(5px);
+            }
+            
+            .footer-bottom {
+                text-align: center;
+                padding-top: 30px;
+                margin-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .footer-bottom span {
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+            
+            /* Animation for service cards */
+            @keyframes slideUp {
+                from { 
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to { 
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .service-card {
+                animation: slideUp 0.6s ease forwards;
+                opacity: 0;
+            }
+            
+            /* Responsive adjustments */
+            @media (max-width: 768px) {
+                .centered {
+                    font-size: 6vw;
+                    top: 35%;
+                }
+                
+                .center {
+                    font-size: 4vw;
+                    top: 50%;
+                }
+                
+                .book {
+                    top: 65%;
+                }
+                
+                .pr {
+                    font-size: 2.5vw;
+                    top: 75%;
+                }
+                
+                ul {
+                    padding-left: 5%;
+                }
+                
+                li a {
+                    padding: 15px 10px;
+                    font-size: 0.9rem;
+                }
+                
+                .tk {
+                    font-size: 1.1rem;
+                }
+                
+                h3.section-title {
+                    font-size: 2rem;
+                }
+            }
+            
+            @media (max-width: 480px) {
+                .hero-container {
+                    height: 70vh;
+                }
+                
+                .centered {
+                    font-size: 8vw;
+                    width: 90%;
+                }
+                
+                .center {
+                    font-size: 5vw;
+                    width: 90%;
+                    top: 55%;
+                }
+                
+                .book {
+                    top: 70%;
+                }
+                
+                .pr {
+                    font-size: 3.5vw;
+                    width: 90%;
+                    top: 85%;
+                }
+                
+                .services-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                    
+            footer {
+                background: linear-gradient(135deg, var(--dark-color), #1a252f);
+                color: white;
+                padding: 60px 10% 30px;
+                position: relative;
+            }
+            
+            .footer-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 40px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .footer-logo {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+            
+            .footer-logo span {
+                color: var(--accent-color);
+            }
+            
+            .footer-about p {
+                opacity: 0.8;
+                line-height: 1.8;
+            }
+            
+            .footer-contact h4, .footer-links h4 {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+                position: relative;
+                padding-bottom: 10px;
+            }
+            
+            .footer-contact h4:after, .footer-links h4:after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 2px;
+                bottom: 0;
+                left: 0;
+                background-color: var(--accent-color);
+            }
+            
+            .contact-info {
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .contact-info i {
+                margin-right: 15px;
+                color: var(--accent-color);
+                font-size: 1.1rem;
+            }
+                
+                /* .footer-links ul {
+                list-style: none;
+                padding: 0;
+            } */
+            
+            /* .footer-links tr {
+                margin-bottom: 12px;
+            } */
+            
+            .footer-links a {
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent-color);
+                transform: translateX(5px);
+            }
+          
+            
+            .footer-bottom {
+                text-align: center;
+                padding-top: 30px;
+                margin-top: 30px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .footer-bottom span {
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+            .footer-container {
+                    grid-template-columns: 1fr;
+                }
+            
+            }
+
+        </style>
+    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <body>
+    <ul>
+        <li><a href="index.html"><div class="tk">TK Mobiles</div></a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+    </ul>        
+        <div class="hero-container">
+            <img class="im" src="si.jpeg" alt="Phone repair background">
+            <div class="centered">WE FIX <span class="highlight">BROKEN & DAMAGED</span><br>CELLULAR PHONES</div><br>
+            <div class="book">
+                <button type="button" class="btn btn-danger">BOOK REPAIR</button> 
+            </div>
+            <div class="pr"><h6>We Offer Fast Repairs and Services on all Kinds of Electronics and Computers. Call us at 0712849221</h6></div>        
+        </div>
+        <section class="services-section">
+            <h3 class="section-title">OUR EXTREME REPAIR SERVICES</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="istockphoto-1172804792-612x612.jpg" alt="Screen Repair" class="service-img">
+                    <div class="service-content">
+                        <h4>Screen Replacement</h4>
+                        <p>We replace cracked or broken screens on all smartphone models with high-quality OEM or aftermarket parts. Our technicians can have your device looking like new in no time.</p>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <img src="istockphoto-1469066514-612x612.jpg" alt="Battery Service" class="service-img">
+                    <div class="service-content">
+                        <h4>Battery Replacement</h4>
+                        <p>Is your phone dying too quickly? We can replace your old battery with a new high-capacity one that will keep your device running all day long.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="water-damaged-phone-repair-express-vernon-1.jpeg" alt="Water Damage" class="service-img">
+                    <div class="service-content">
+                        <h4>Water Damage Repair</h4>
+                        <p>Accidentally dropped your phone in water? Bring it to us immediately for professional water damage assessment and repair to potentially save your device.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="3.jpeg" alt="Software Issues" class="service-img">
+                    <div class="service-content">
+                        <h4>Software Troubleshooting</h4>
+                        <p>From frozen screens to virus removal, our software experts can diagnose and fix any software-related issues your device may be experiencing.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="cover2-thumbnail.jpg" alt="Charging Port" class="service-img">
+                    <div class="service-content">
+                        <h4>Charging Port Repair</h4>
+                        <p>If your device isn't charging properly, we can clean or replace the charging port to get your phone charging like new again.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="5.jpeg" alt="Data Recovery" class="service-img">
+                    <div class="service-content">
+                        <h4>Data Recovery</h4>
+                        <p>Lost important photos, contacts, or files? Our data recovery specialists can often retrieve data from damaged or malfunctioning devices.</p>
+                    </div>
+                </div>
+   <!-- Service Card 7 -->
+   <div class="service-card">
+                        <img src="ii.jpeg" alt="Camera Repair" class="service-img">
+                        <div class="service-content">
+                            <h4>Camera Repair</h4>
+                            <p>Blurry photos or non-functioning camera? We can repair or replace your phone's camera module to restore perfect picture quality.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 8 -->
+                    <div class="service-card">
+                        <img src="speaker.jpeg" alt="Speaker Repair" class="service-img">
+                        <div class="service-content">
+                            <h4>Speaker Repair</h4>
+                            <p>Crackling sound or no audio? We can fix your phone's speaker issues whether it's the earpiece, loudspeaker, or microphone.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Service Card 9 -->
+                    <div class="service-card">
+                        <img src="m.jpeg" alt="Motherboard Repair" class="service-img">
+                        <div class="service-content">
+                            <h4>Motherboard Repair</h4>
+                            <p>For complex hardware issues, our technicians can diagnose and repair motherboard problems to bring your device back to life.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-arrow left" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-arrow right" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>       
+     </section>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo"><span>TK</span> MOBILES</div>
+                    <p>We provide fast, reliable, and affordable repair services for all major smartphone brands and models. Our certified technicians have years of experience fixing all types of mobile devices.</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Main Street, Colombo 7</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+94 712948221</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>tkmobiles610@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+<div>
+    <table style="border-collapse: separate; border-spacing: 15px;">                     
+        <tr><td><a href="index.html">Home</a></td></tr>
+        <tr><td><a href="services.html">Services</a></td></tr>
+        <tr><td><a href="about.html">About Us</a></td></tr>
+        <tr><td><a href="offers.html">My Offers</a></td></tr>
+        <tr><td><a href="help.html">Help</a></td></tr>
+        <tr><td><a href="conditions.html">Terms & Conditions</a></td></tr>
+        </table> 
+                        </div> 
+                </div>
+                </div> 
+            <div class="footer-bottom">
+                @ Copyright 2024 | <span>Designed By Freez</span>
+            </div>
+        </footer>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            const servicesGrid = $('#servicesGrid');
+            const cardWidth = $('.service-card').outerWidth(true);
+            const visibleCards = Math.floor($('.services-container').width() / cardWidth);
+            let currentPosition = 0;
+            const totalCards = $('.service-card').length;
+            
+            // Calculate total width needed for all cards
+            const totalWidth = cardWidth * totalCards;
+            servicesGrid.css('width', totalWidth + 'px');
+            
+            // Navigation buttons
+            $('#nextBtn').click(function() {
+                if (currentPosition < totalCards - visibleCards) {
+                    currentPosition++;
+                    updateSlider();
+                }
+            });
+            
+            $('#prevBtn').click(function() {
+                if (currentPosition > 0) {
+                    currentPosition--;
+                    updateSlider();
+                }
+            });
+            
+            function updateSlider() {
+                const moveAmount = -currentPosition * cardWidth;
+                servicesGrid.css('transform', `translateX(${moveAmount}px)`);
+                
+                // Disable buttons when at extremes
+                $('#prevBtn').prop('disabled', currentPosition === 0);
+                $('#nextBtn').prop('disabled', currentPosition >= totalCards - visibleCards);
+            }
+            
+            // Initialize
+            updateSlider();
+            
+            // Handle window resize
+            $(window).resize(function() {
+                const newVisibleCards = Math.floor($('.services-container').width() / cardWidth);
+                if (currentPosition > totalCards - newVisibleCards) {
+                    currentPosition = Math.max(0, totalCards - newVisibleCards);
+                    updateSlider();
+                }
+            });
+        });
+    </script>
+        
+        </body>
+        </html>

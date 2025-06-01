@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Services - TK Mobiles</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #f39c12;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 0 0 10%;
+            overflow: hidden;
+            background-color: var(--dark-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 60px;
+        }
+        
+        ul:hover {
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+
+        li {
+            float: left;
+            transition: transform 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateY(-3px);
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 16px;
+            margin-left: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 15px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        li a:hover:after {
+            width: 50%;
+            left: 25%;
+        }
+        
+        li a:hover {
+            color: var(--accent-color);
+            background-color: transparent;
+        }
+        
+        .tk {
+            color: var(--accent-color);
+            font-size: 22px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Services Page Styles */
+        .services-header {
+            background: url('ser.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+        }
+
+        .services-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .services-container {
+            padding: 60px 10%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .service-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-info h3 {
+            margin: 10px 0;
+            color: var(--dark-color);
+        }
+
+        .service-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #1a252f);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-contact h4, .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-contact h4:after, .footer-links h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .services-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html"><div class="tk">TK Mobiles</div></a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+
+    <div class="services-header">
+        <div>
+            <h1>Our Services</h1>
+            <p>Quality repairs with guaranteed results</p>
+        </div>
+    </div>
+
+    <div class="services-container">
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="my4.jpg" alt="Screen Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Screen Replacement</h3>
+                    <p>Original quality displays for all models</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="about.jpg" alt="Battery Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Battery Replacement</h3>
+                    <p>Long-lasting OEM battery solutions</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="my.jpg" alt="Water Damage Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Water Damage Repair</h3>
+                    <p>Expert liquid damage recovery</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="cont.jpg" alt="Charging Port Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Charging Port Repair</h3>
+                    <p>Fast charging restored</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="data.jpg" alt="Software Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Software Issues</h3>
+                    <p>OS updates, crashes, and bugs fixed</p>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="ii.jpeg" alt="Camera Repair" class="service-img">
+                <div class="service-info">
+                    <h3>Camera Repair</h3>
+                    <p>Clear photos restored</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo"><span>TK</span> MOBILES</div>
+                <p>We provide fast, reliable, and affordable repair services for all major smartphone brands and models. Our certified technicians have years of experience fixing all types of mobile devices.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Main Street, Colombo 7</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <p>+94 712948221</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <p>tkmobiles610@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                    <h4>Quick Links</h4>
+<div>
+    <table style="border-collapse: separate; border-spacing: 15px;">                     
+                        <tr><td><a href="index.html">Home</a></td></tr>
+                        <tr><td><a href="services.html">Services</a></td></tr>
+                        <tr><td><a href="about.html">About Us</a></td></tr>
+                        <tr><td><a href="offers.html">My Offers</a></td></tr>
+                        <tr><td><a href="help.html">Help</a></td></tr>
+                        <tr><td><a href="conditions.html">Terms & Conditions</a></td></tr>
+        </table> 
+                        </div> 
+                </div>
+                </div> 
+            <div class="footer-bottom">
+                @ Copyright 2024 | <span>Designed By Freez</span>
+            </div>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us - TK Mobiles</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #f39c12;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 0 0 10%;
+            overflow: hidden;
+            background-color: var(--dark-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 60px; /* Explicit height */
+        }
+        
+        ul:hover {
+            background-color: rgba(44, 62, 80, 0.95);
+        }
+
+        li {
+            float: left;
+            transition: transform 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateY(-3px);
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 16px;
+            margin-left: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 15px;
+            left: 50%;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+        }
+        
+        li a:hover:after {
+            width: 50%;
+            left: 25%;
+        }
+        
+        li a:hover {
+            color: var(--accent-color);
+            background-color: transparent;
+        }
+        
+        .tk {
+            color: var(--accent-color);
+            font-size: 22px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* About Page Specific Styles */
+        .about-header {
+            background:url('abo.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 60px; /* THIS IS THE CRUCIAL FIX */
+            color: white;
+        }
+
+        .about-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content {
+            padding: 80px 10%;
+        }
+
+        .mission-vision {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .mission, .vision {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .mission h2, .vision h2 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        /* Slideshow Section */
+        .work-showcase {
+            margin: 80px 0;
+        }
+        
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .mySlides {
+            display: none;
+        }
+        
+        .mySlides img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+        
+        /* Slideshow text */
+        .slide-text {
+            color: white;
+            background-color: rgba(0,0,0,0.7);
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        /* The dots/bullets/indicators */
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+            background-color: var(--accent-color);
+        }
+        
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #1a252f);
+            color: white;
+            padding: 60px 10% 30px;
+            position: relative;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--accent-color);
+        }
+        
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-contact h4, .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-contact h4:after, .footer-links h4:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-bottom span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .about-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .mission-vision {
+                flex-direction: column;
+            }
+            
+            .mySlides img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html"><div class="tk">TK Mobiles</div></a></li>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="services.html">SERVICES</a></li>
+        <li><a href="gallery.html">GALLERY</a></li>
+        <li><a href="contact.html">CONTACT US</a></li>
+    </ul>
+
+    <div class="about-header">
+        <div>
+            <h1>About TK Mobiles</h1>
+            <p>Your trusted partner for all mobile device repairs since 2010. We combine technical expertise with exceptional customer service.</p>
+        </div>
+    </div>
+
+    <div class="about-content">
+        <h2>Our Story</h2>
+        <p>Founded in 2010 by a team of passionate technicians, TK Mobiles started as a small repair shop in Colombo. Today, we've grown into one of the most trusted mobile repair services in Sri Lanka, with thousands of satisfied customers and a reputation for quality repairs at affordable prices.</p>
+        
+        <p>What sets us apart is our commitment to using only high-quality parts and our team of certified technicians who undergo regular training to stay updated with the latest repair techniques and technologies.</p>
+
+        <div class="mission-vision">
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>To provide fast, reliable, and affordable repair services while maintaining the highest standards of quality and customer service. We believe in fixing devices right the first time, using only the best parts available.</p>
+            </div>
+            <div class="vision">
+                <h2>Our Vision</h2>
+                <p>To become the most trusted mobile repair service in Sri Lanka by continuing to innovate our repair processes, expanding our services, and maintaining our commitment to customer satisfaction.</p>
+            </div>
+        </div>
+
+        <div class="work-showcase">
+            <h2>Our Daily Work</h2>
+            <p>See some of our recent repair projects and the quality work we deliver every day.</p>
+            
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <img src="my.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Precision motherboard repairs by  technicians</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="my2.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Screen replacement with genuine parts</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="my3.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Battery replacement service with warranty</div>
+                </div>
+                
+                <div class="mySlides fade">
+                    <img src="my4.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Water damage restoration specialists</div>
+                </div>
+                <div class="mySlides fade">
+                    <img src="data.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Data Recovery with garranty</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <img src="my6.jpg" alt="Mobile Repair Work">
+                    <div class="slide-text">Charging Port Repair with genuine parts </div>
+                </div>
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            
+            <div class="dot-container">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+                <span class="dot" onclick="currentSlide(4)"></span> 
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo"><span>TK</span> MOBILES</div>
+                <p>We provide fast, reliable, and affordable repair services for all major smartphone brands and models. Our certified technicians have years of experience fixing all types of mobile devices.</p>
+            </div>
+            
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Main Street, Colombo 7</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-phone"></i>
+                    <p>+94 712948221</p>
+                </div>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <p>tkmobiles610@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                    <h4>Quick Links</h4>
+<div>
+    <table style="border-collapse: separate; border-spacing: 15px;">                     
+                        <tr><td><a href="index.html">Home</a></td></tr>
+                        <tr><td><a href="services.html">Services</a></td></tr>
+                        <tr><td><a href="about.html">About Us</a></td></tr>
+                        <tr><td><a href="offers.html">My Offers</a></td></tr>
+                        <tr><td><a href="help.html">Help</a></td></tr>
+                        <tr><td><a href="conditions.html">Terms & Conditions</a></td></tr>
+        </table> 
+                        </div> 
+                </div>
+                </div> 
+            <div class="footer-bottom">
+                @ Copyright 2024 | <span>Designed By Freez</span>
+            </div>
+        </footer>
+        <script>
+            let slideIndex = 1;
+            showSlides(slideIndex);
+            
+            // Auto slide change every 5 seconds
+            let slideInterval = setInterval(() => {
+                plusSlides(1);
+            }, 5000);
+            
+            // Pause on hover
+            const slideshow = document.querySelector('.slideshow-container');
+            slideshow.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+            
+            slideshow.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    plusSlides(1);
+                }, 5000);
+            });
+            
+            // Next/previous controls
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+            
+            // Thumbnail image controls
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+            
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                
+                if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                
+                slides[slideIndex-1].style.display = "block";
+                dots[slideIndex-1].className += " active";
+            }
+        </script>
+    </body>
+    </html>
